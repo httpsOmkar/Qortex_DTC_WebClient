@@ -1,6 +1,7 @@
 ## Table of Contents
   - [Install Prerequisites](#install-prerequisites)
   - [Web Client Preparation](#web-client-preparation)
+  - [Web Server Preparation](#web-server-preparation)
   - [Configuring the Web Server](#configuring-the-web-server)
   - [Running the Web Server](#running-the-web-server)
   - [Using the HTTP REST API](#using-the-http-rest-api)
@@ -40,6 +41,13 @@
         - ***deploy_windows*** - This will directly copy the files from the ```src``` folder into the ```dist``` folder when run from the windows command prompt
       - All four commands above will create the ```dist``` folder if the folder does not yet exist
     - Open ```index.html``` in a text editor and replace the ```<insert_your_key>``` on the line ```<script src="https://maps.googleapis.com/maps/api/js?key=<insert_your_key>&callback=initialize"></script>``` with your Google Maps API key
+
+<a name="web-server-preparation"/>
+
+#### Web Server Preparation
+  - Navigate to the ```src/server``` folder
+  - Run ```npm install``` to install the required http node modules
+  - [Configure the server](#configuring-the-web-server)
 
 <a name="configuring-the-web-server"/>
 
