@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <title>Qortex DTC Web Client</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/application.css">
+
+    <!-- scripts -->
+    <script>
+      function getParamByName(name, url) {
+        if (!url) {
+          url = window.location.href;
+        }
+
+        name = name.replace(/[\[\]]/g, "\\$&");
+        let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+        let results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      function initialize() {
+        document.addEventListener("DOMContentLoaded", () => {
+          start();
+        });
+      }
+    </script>
+    <script src="dist/client.js" type="text/javascript"></script>
+    <script src="dist/sensor_data.js", type="text/javascript"></script>
+    <script src="dist/map_data.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<insert_your_key>&callback=initialize"></script>
+    <script src="dist/utils.js" type="text/javascript"></script>
+    <script src="dist/symbols.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="map-canvas" class="map-canvas"></div>
+      <form id="lidar-coords" class="lidar-coords">
+        <div>
+            <div class="server-statuses-container">
+              <p class="server-statuses-title">Server Statuses</p>
+              <ul class="server-statuses-list"
+                  id="server-statuses-list"/>
+            </div>
+            <p>Hide Debug Tracks</p>
+            <input id="hide-debug-tracks"
+                   type="checkbox"
+                   checked="checked"
+                   value="Hide Debug Tracks" />
+        </div>
+      </form>
+    </div>
+  </body>
+ </html>

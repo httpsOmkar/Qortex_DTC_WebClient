@@ -1,0 +1,89 @@
+.container {
+  display:flex;
+}
+
+.map-canvas {
+  height: 80vh;
+  width: 80vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.lidar-attributes {
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px;
+  margin-top: 25px;
+  padding: 10px;
+
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.lidar-attributes:first-of-type {
+  margin-top: 10px;
+}
+
+.lidar-attributes div {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 10px;
+}
+
+.lidar-attributes div:first-of-type {
+  margin-top: 0px;
+}
+
+.lidar-attributes p {
+  font-size: 20px
+}
+
+.lidar-attributes input {
+  height: 20px;
+}
+
+.server-statuses-container {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.server-statuses-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.server-status-list-item {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+.server-name-label {
+  font-weight: bold;
+}
+
+.server-status-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.server-status-label {
+  margin-left: 10px; 
+}
+
+.server-status-text {
+  margin-left: 20px;
+}
+
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
+}
+

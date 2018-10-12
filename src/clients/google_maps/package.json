@@ -1,0 +1,36 @@
+{
+  "name": "google_maps_qortex_client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy_linux": "mkdir -p dist; cp src/* dist",
+    "deploy_windows": "if not exist dist mkdir dist & copy src\\* dist",
+    "build": "BABEL_ENV=production babel src -d dist",
+    "build_debug": "babel src -d dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-minify": "^0.5.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env"
+      ]
+    ],
+    "env": {
+      "production": {
+        "presets": [
+          [
+            "minify"
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+html, body, header, section, div, p, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  background-color: transparent;
+
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html, body {
+  height: 100%;
+}
