@@ -119,7 +119,7 @@
   ```
 
   - The server expects the interface above, and will expect the filter to be runnable as a pure function which returns the modified data
-  - There are a few example filters already included in the ```src/server/filters/cart``` and ```src/server/filters/geo``` folders, and also two example filter lists in the [config](config) folder
+  - There are a few example filters already included in the [src/server/filters/cart](src/server/filters/cart) and [src/server/filters/geo](src/server/filters/geo) folders, and also two example filter lists in the [config](config) folder
 
 <a name="configuring-filters"/>
 
