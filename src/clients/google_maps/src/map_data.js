@@ -35,7 +35,7 @@ class MapData {
       center: this.center,
       scaleControl: true,
       scaleControlOptions: {
-        position: google.maps.ControlPosition.TOP_RIGHT 
+        position: google.maps.ControlPosition.TOP_RIGHT
       },
       mapTypeControl: true,
       mapTypeControlOptions: {
@@ -67,7 +67,7 @@ class MapData {
           this.hideDebugTracks);
       }
     }
-    
+
     if (this.firstUpdate) {
       let sensorNames = Object.keys(this.sensorData);
       let firstSensor = sensorNames[0];

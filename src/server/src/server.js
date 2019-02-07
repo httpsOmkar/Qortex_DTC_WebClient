@@ -41,20 +41,20 @@ class Server {
     this.log_dir = this.root_dir + "logs/";
     this.config_dir = this.config_dir = path.dirname(config_filepath) + "/";
     this.not_found = "<html><body><p>404 not found</p></body></html>";
-    
+
     this.messages = {};
     this.qortex_listeners = [];
 
     // this.config is set within configure()
     this.configure(config_filepath);
-    
+
     this.prepare_message_cache();
     this.create_listeners(save_logs);
-    
+
     this.filters = {};
     this.load_filters("cart");
     this.load_filters("geo");
-   
+
     this.create_routes();
   }
 
@@ -63,7 +63,7 @@ class Server {
     this.config = ini.parse(
       fs.readFileSync(config_filepath, "utf-8")
     );
-    
+
     this.client_dir = this.root_dir + "src/clients/";
 
     if (this.config.client
@@ -82,7 +82,7 @@ class Server {
   }
 
   create_listeners(save_logs) {
-    // Create listeners 
+    // Create listeners
     let server_names = Object.keys(this.config.servers);
     for (let i=0; i<server_names.length; ++i) {
       this.qortex_listeners.push({});
@@ -127,10 +127,10 @@ class Server {
   }
 
   create_routes() {
-    this.router = router(); 
+    this.router = router();
 
     this.router
-      // index.html 
+      // index.html
       .get("/", this.serve_file())
       .get("/api/object_list/:type", this.serve_data())
       // File in client directory
@@ -232,7 +232,7 @@ class Server {
 
   prepare_api_message(type) {
     let message = [];
-    
+
     for (let i=0; i<this.qortex_listeners.length; i++) {
       message.push(this.create_api_output(i, type));
     }
@@ -248,7 +248,7 @@ class Server {
           url != "/api/object_list/cart") {
         console.log(url);
       }
-      
+
       this.router(req, res, (req, res) => {
         res.writeHead(501);
         res.end(http.STATUS_CODES[501] + "\n");
@@ -256,7 +256,7 @@ class Server {
     }).listen(this.port);
 
     console.log(
-      "Web server started! Listening for connections on port " + 
+      "Web server started! Listening for connections on port " +
       this.port + ".\n");
   }
 }

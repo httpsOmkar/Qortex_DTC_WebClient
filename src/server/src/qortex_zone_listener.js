@@ -40,11 +40,11 @@ class QortexZoneListener {
     this.packet_size = null,
     this.data_buffer = Buffer.alloc(0),
     this.size_buffer = Buffer.alloc(0),
-    
+
     this.ip_address = config.ip_address;
     this.port = config.zone_port;
-    this.init_coordinates(config); 
-          
+    this.init_coordinates(config);
+
     this.zone_list = [];
 
     if (save_logs) {
@@ -53,7 +53,7 @@ class QortexZoneListener {
                                   .replace(/,/g, "")
                                   .replace(/ /g, "_")
                                   .replace(/:/g, "-");
-      this.log_filepath = this.log_dir + 
+      this.log_filepath = this.log_dir +
                           date_string +
                           "_" + this.name +
                           "_zones.json";
@@ -96,7 +96,7 @@ class QortexZoneListener {
     this.x = config.x_position;
     this.y = config.y_position;
     this.z = config.z_position;
-    
+
     if (isNaN(this.x)) {
       this.x = 0;
     }
@@ -106,7 +106,7 @@ class QortexZoneListener {
     if (isNaN(this.z)) {
       this.z = 0;
     }
-    
+
     this.lat = Number(config.lat);
     this.lng = Number(config.lng);
     this.heading = Number(config.heading);
@@ -292,8 +292,8 @@ class QortexZoneListener {
         }
         return;
       }
-      
-      console.log(err.message); 
+
+      console.log(err.message);
     });
 
     this.socket.on("close", () => {
@@ -304,7 +304,7 @@ class QortexZoneListener {
       // Try to reconnect
       setTimeout(() => {
         if (this.verbose) {
-          console.log("Attempting to reconnect to " + 
+          console.log("Attempting to reconnect to " +
                       this.ip_address + ":" + this.port);
         }
         this.socket = new net.Socket();
@@ -319,4 +319,4 @@ class QortexZoneListener {
   }
 }
 
-module.exports = QortexZoneListener
+module.exports = QortexZoneListener;

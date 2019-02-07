@@ -21,7 +21,7 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-*/ 
+*/
 let path = require("path");
 let process = require("process");
 let Server = require("./server.js");
@@ -108,9 +108,9 @@ if (args)
 {
   console.log("Qortex DTC Web Client v" + version + "\n");
   let server = new Server(
-    process.env.PORT || args.port, 
+    process.env.PORT || args.port,
     args.save_logs,
-    args.config_filepath); 
+    args.config_filepath);
 
   server.start();
 }

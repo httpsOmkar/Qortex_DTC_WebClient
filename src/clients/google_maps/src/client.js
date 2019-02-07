@@ -43,7 +43,7 @@ function attachListeners(mapData) {
 //====================================================//
 
 function getServerStatuses(statusList) {
-  return statusList.getElementsByTagName("li"); 
+  return statusList.getElementsByTagName("li");
 }
 
 function removeClassFromComponent(component, className) {
@@ -100,12 +100,12 @@ function setTimestampText(timestampText, timestamp) {
       if (componentHasClass(timestampText, "green-text")) {
         removeClassFromComponent(timestampText, "green-text");
       }
-     
-      if (!componentHasClass(timestampText, "red-text")) { 
-        timestampText.className += " red-text"; 
+
+      if (!componentHasClass(timestampText, "red-text")) {
+        timestampText.className += " red-text";
       }
     }
-    else { 
+    else {
       if (componentHasClass(timestampText, "red-text")) {
         removeClassFromComponent(timestampText, "red-text");
       }
@@ -129,7 +129,7 @@ function createLastReceivedPacketComponent(serverName,
   let timestampText = document.createElement("p");
   timestampText.className += "server-status-text";
   setTimestampText(timestampText, timestamp);
-  
+
   let timestampContainer = document.createElement("div");
   timestampContainer.className += "server-status-container";
   timestampContainer.id = serverName + "-timestamp-container";
@@ -149,20 +149,20 @@ function createConnectionStatusComponent(serverName,
   let connectionStatusText = document.createElement("p");
   connectionStatusText.className += "server-status-text";
   setConnectionStatusText(connectionStatusText, connected);
- 
+
   let connectedContainer = document.createElement("div");
   connectedContainer.className += "server-status-container";
-  connectedContainer.id = serverName + 
+  connectedContainer.id = serverName +
                           "-connection-status-container";
 
   connectedContainer.appendChild(connectedLabel);
   connectedContainer.appendChild(connectionStatusText);
-  
+
   return connectedContainer;
 }
 
-function createServerStatusListItem(serverName, 
-                                    connected, 
+function createServerStatusListItem(serverName,
+                                    connected,
                                     timestamp) {
   let connectedComponent = createConnectionStatusComponent(
     serverName,
@@ -207,8 +207,8 @@ function setServerNameInListItem(listItem, name) {
 
 //======================================================//
 
-function updateServerStatusComponent(component, 
-                                     connected, 
+function updateServerStatusComponent(component,
+                                     connected,
                                      timestamp) {
   let connectedContainer = component.children[1];
   let connectedStr = connected ? "Connected" : "Disconnected";
@@ -229,7 +229,7 @@ function updateServerStatuses(message) {
   let serverStatuses = getServerStatuses(statusList);
   let serverList = {};
   for (let i=0; i<serverStatuses.length; i++) {
-    serverList[getServerNameFromListItem(serverStatuses[i])] = i; 
+    serverList[getServerNameFromListItem(serverStatuses[i])] = i;
   }
 
   for (let idx in message) {
@@ -238,7 +238,7 @@ function updateServerStatuses(message) {
       let serverStatus = serverStatuses[serverIndex];
       let connected = message[idx].info.connected;
       let timestamp = message[idx].info.timestamp;
-      
+
       updateServerStatusComponent(serverStatus, connected, timestamp);
     }
     else {
@@ -262,12 +262,12 @@ function start() {
   let fetchObjects = () => {
     let ajax = new XMLHttpRequest();
     ajax.onreadystatechange = () => {
-      if (ajax.readyState == 4 && 
+      if (ajax.readyState == 4 &&
           ajax.status == 200) {
         let message = JSON.parse(ajax.responseText);
         mapData.update(message);
-        
-        updateServerStatuses(message); 
+
+        updateServerStatuses(message);
       }
       else {
         /*

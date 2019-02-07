@@ -37,7 +37,7 @@ Size and velocity are not in geodesic coordinates
         classification: <string>
       }
     ],
-    zones: 
+    zones:
     [
       {
         uuid: <string>,
