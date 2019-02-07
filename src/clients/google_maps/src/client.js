@@ -275,14 +275,14 @@ function start() {
         console.log("");
         */
       }
-    }
+    };
     ajax.onerror = () => {
       mapData.clear();
-    }
+    };
 
     ajax.open("GET", "/api/object_list/geo");
     ajax.send();
-  }
+  };
   fetchObjects();
   setInterval(fetchObjects, 100);
 }

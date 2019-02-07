@@ -73,7 +73,7 @@ class Server {
   }
 
   prepare_message_cache() {
-    this.cached_data = { cart: [], geo: [] }
+    this.cached_data = { cart: [], geo: [] };
     let server_names = Object.keys(this.config.servers);
     for (let server_idx in server_names) {
       this.cached_data.geo.push({ timestamp: -1, message: {} });
@@ -143,7 +143,7 @@ class Server {
 
       let message = this.prepare_api_message(req.params.type);
       res.end(JSON.stringify(message));
-    }
+    };
   }
 
   serve_file() {
@@ -151,7 +151,7 @@ class Server {
       let tokens = req.url.split("/");
       if (tokens.length == 2 && tokens[1] === "")
       {
-        req.url = "index.html"
+        req.url = "index.html";
       }
 
       // Only serve js files in the dist folder, don't serve anything
@@ -188,7 +188,7 @@ class Server {
         res.writeHead(200, { "Content-Type": content_type });
         res.end(file_contents);
       });
-    }
+    };
   }
 
   filter(type, data) {

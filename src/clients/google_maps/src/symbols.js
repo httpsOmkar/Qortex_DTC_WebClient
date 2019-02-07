@@ -26,12 +26,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 const symbolScale = 4;
 const symbolLabelOrigin = {x: 0, y: -3};
 
-let Symbols = {}
+let Symbols = {};
 Symbols.customOutline = function(color, type) {
   let symbol = Symbols[type];
   symbol.strokeColor = color;
   return symbol;
-}
+};
 Object.defineProperty(Symbols, "UNIDENTIFIED", {
   value: {
     fillColor: "#b3b3b3",

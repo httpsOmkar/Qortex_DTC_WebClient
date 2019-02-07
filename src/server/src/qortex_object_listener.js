@@ -166,7 +166,7 @@ class QortexObjectListener {
         connected: this.connected,
         timestamp: this.last_received_packet_timestamp
       }
-    }
+    };
   }
 
   create_api_output_geo() {
@@ -193,7 +193,7 @@ class QortexObjectListener {
     let obj_world = {};
     obj_world.id = obj_local.id;
 
-    obj_world.position = {}
+    obj_world.position = {};
     obj_world.position.x = obj_local.position.x + this.x;
     obj_world.position.y = obj_local.position.y + this.y;
     obj_world.position.z = obj_local.position.z + this.z;

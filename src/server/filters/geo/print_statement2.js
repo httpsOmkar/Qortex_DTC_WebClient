@@ -8,4 +8,4 @@ function filter(data, configs)
 module.exports = {
   name: "print_statement2",
   filter: filter
-}
+};

@@ -20,4 +20,4 @@ function filter(data, configs)
 module.exports = {
   name: "offset_objects",
   filter: filter
-}
+};
