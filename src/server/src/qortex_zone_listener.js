@@ -298,8 +298,6 @@ class QortexZoneListener {
 
     this.socket.on("close", () => {
       // Clean up
-      this.object_list_geo = {};
-      this.object_list_cart = {};
       this.connected = false;
       // Try to reconnect
       setTimeout(() => {
