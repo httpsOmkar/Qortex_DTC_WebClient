@@ -26,12 +26,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 const symbolScale = 4;
 const symbolLabelOrigin = {x: 0, y: -3};
 
-let Symbols = {}
+let Symbols = {};
 Symbols.customOutline = function(color, type) {
   let symbol = Symbols[type];
   symbol.strokeColor = color;
   return symbol;
-}
+};
 Object.defineProperty(Symbols, "UNIDENTIFIED", {
   value: {
     fillColor: "#b3b3b3",
@@ -40,7 +40,7 @@ Object.defineProperty(Symbols, "UNIDENTIFIED", {
     path: google.maps.SymbolPath.CIRCLE,
     strokeColor: "#595959",
     strokeOpacity: 1,
-    strokeWeight: symbolScale/3, 
+    strokeWeight: symbolScale/3,
     scale: symbolScale
   },
   writable: false,
@@ -55,7 +55,7 @@ Object.defineProperty(Symbols, "IGNORED", {
     path: google.maps.SymbolPath.CIRCLE,
     strokeColor: "#595959",
     strokeOpacity: 1,
-    strokeWeight: symbolScale/6, 
+    strokeWeight: symbolScale/6,
     scale: symbolScale/2
   },
   writable: false,
@@ -70,7 +70,7 @@ Object.defineProperty(Symbols, "HUMAN", {
     path: google.maps.SymbolPath.CIRCLE,
     strokeColor: "#33cc33",
     strokeOpacity: 1,
-    strokeWeight: symbolScale/3, 
+    strokeWeight: symbolScale/3,
     scale: symbolScale
   },
   writable: false,
@@ -85,7 +85,7 @@ Object.defineProperty(Symbols, "VEHICLE", {
     path: google.maps.SymbolPath.CIRCLE,
     strokeColor: "#b30049",
     strokeOpacity: 1,
-    strokeWeight: symbolScale/3, 
+    strokeWeight: symbolScale/3,
     scale: symbolScale
   },
   writable: false,
@@ -100,11 +100,10 @@ Object.defineProperty(Symbols, "LIDAR", {
     path: google.maps.SymbolPath.CIRCLE,
     strokeColor: "#6699ff",
     strokeOpacity: 1,
-    strokeWeight: symbolScale/3, 
+    strokeWeight: symbolScale/3,
     scale: symbolScale
   },
   writable: false,
   enumerable: true,
   configuration: false
 });
-

@@ -32,7 +32,7 @@ class Utils {
     return (rad * (180 / Math.PI));
   }
 
-  static xyzToLatLng(originLat, originLng, originBearing, 
+  static xyzToLatLng(originLat, originLng, originBearing,
                   x, y, z) {
     let distance = Math.sqrt(x*x + y*y + z*z);
     let earthRadius = 6371000.0;
@@ -48,15 +48,15 @@ class Utils {
                          Math.sin(angular_distance) *
                          Math.cos(bearing)));
     let lng2 = lng1 +
-              Math.atan2((Math.sin(bearing) * 
+              Math.atan2((Math.sin(bearing) *
                           Math.sin(angular_distance) *
                           Math.cos(lat1)),
                          (Math.cos(angular_distance) -
                           (Math.sin(lat1) *
                            Math.sin(lat2))));
     lat2 = Utils.radToDeg(lat2);
-    lng2 = Utils.radToDeg(lng2); 
-    
+    lng2 = Utils.radToDeg(lng2);
+
     return { lat: lat2, lng: lng2 };
   }
 }

@@ -48,7 +48,7 @@ class Queue {
 
 class MarkerData {
   constructor(map,
-              localId, 
+              localId,
               lat,
               lng,
               size,
@@ -57,16 +57,16 @@ class MarkerData {
               outlineColor,
               classification) {
     this.map = map;
-    
+
     this.localId = localId;
     this.sensorName = sensorName;
     this.uniqueId = sensorName + "_" + localId;
-    
+
     this.lat = lat;
     this.lng = lng;
     let coords = new google.maps.LatLng(this.lat, this.lng);
-    this.setSymbol(classification, outlineColor); 
-   
+    this.setSymbol(classification, outlineColor);
+
     //this.pathUpdateTick = 0;
     //this.pathData = new Queue();
 
@@ -76,7 +76,7 @@ class MarkerData {
       fontWeight: "bold",
       text: localId
     };
-    
+
     this.marker = new google.maps.Marker({
       position: coords,
       map: this.map,
@@ -117,9 +117,9 @@ class MarkerData {
   setCoordinates(lat, lng) {
     this.lat = lat;
     this.lng = lng;
-    
-    this._updateMarkerPosition();  
-    
+
+    this._updateMarkerPosition();
+
 /*
     this.pathData.enqueue(coords);
     if (this.pathData.length > 5) {
@@ -129,7 +129,7 @@ class MarkerData {
   }
 
   setSize(size) {
-    this.size = size; 
+    this.size = size;
   }
 
   setVelocity(velocity) {
@@ -160,7 +160,7 @@ class SensorData {
     this.bearing = bearing;
     this.markers = {};
     this.hideDebugTracks = hideDebugTracks;
-   
+
     this.map = map;
 
     let markerLabel = {
@@ -195,13 +195,13 @@ class SensorData {
         continue;
       }
 
-      this._updateMarker(obj.id, 
-                         lat, 
-                         lng, 
-                         size, 
-                         vel, 
+      this._updateMarker(obj.id,
+                         lat,
+                         lng,
+                         size,
+                         vel,
                          this.name,
-                         this.markerColor, 
+                         this.markerColor,
                          classification);
       indicesPresent[obj.id] = true;
     }
@@ -224,18 +224,18 @@ class SensorData {
   updateHideDebugTracks(hideDebugTracks) {
     this.hideDebugTracks = hideDebugTracks;
   }
- 
-  _updateMarker(localId, 
-                lat, 
-                lng, 
-                size, 
-                velocity, 
-                sensorName, 
-                outlineColor,  
+
+  _updateMarker(localId,
+                lat,
+                lng,
+                size,
+                velocity,
+                sensorName,
+                outlineColor,
                 classification) {
-    if (!this.markers[localId]) { 
+    if (!this.markers[localId]) {
       this.markers[localId] = new MarkerData(this.map,
-                                             localId, 
+                                             localId,
                                              lat,
                                              lng,
                                              size,
@@ -251,15 +251,15 @@ class SensorData {
       this.markers[localId].setSymbol(classification, outlineColor);
     }
   }
- 
-  
+
+
   _updateMarkers() {
     for (let id in this.markers) {
       let marker = this.markers[id];
-      this._updateMarker(id, 
-                         marker.lat, 
+      this._updateMarker(id,
+                         marker.lat,
                          marker.lng,
-                         marker.size, 
+                         marker.size,
                          marker.velocity,
                          this.name,
                          this.markerColor,
@@ -267,4 +267,3 @@ class SensorData {
     }
   }
 }
-

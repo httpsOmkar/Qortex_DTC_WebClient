@@ -40,7 +40,7 @@ class QortexObjectListener {
     this.packet_size = null,
     this.data_buffer = Buffer.alloc(0),
     this.size_buffer = Buffer.alloc(0),
-    
+
     this.ip_address = config.ip_address;
     this.port = config.object_port;
     this.init_coordinates(config);
@@ -48,7 +48,7 @@ class QortexObjectListener {
 
     this.connected = false;
     this.last_received_packet_timestamp = 0;
-      
+
     this.object_list_geo = {}; // Geodesic coordinates
     this.object_list_cart = {}; // Cartesian coordinates
 
@@ -58,7 +58,7 @@ class QortexObjectListener {
                                   .replace(/,/g, "")
                                   .replace(/ /g, "_")
                                   .replace(/:/g, "-");
-      this.log_filepath = this.log_dir + 
+      this.log_filepath = this.log_dir +
                           date_string +
                           "_" + this.name +
                           "_objects.json";
@@ -101,7 +101,7 @@ class QortexObjectListener {
     this.x = config.x_position;
     this.y = config.y_position;
     this.z = config.z_position;
-    
+
     if (isNaN(this.x)) {
       this.x = 0;
     }
@@ -111,7 +111,7 @@ class QortexObjectListener {
     if (isNaN(this.z)) {
       this.z = 0;
     }
-    
+
     this.lat = Number(config.lat);
     this.lng = Number(config.lng);
     this.heading = Number(config.heading);
@@ -166,12 +166,12 @@ class QortexObjectListener {
         connected: this.connected,
         timestamp: this.last_received_packet_timestamp
       }
-    }
+    };
   }
 
   create_api_output_geo() {
     let output_geo = this.create_api_output();
-    
+
     output_geo.info.lat = this.lat;
     output_geo.info.lng = this.lng;
     output_geo.info.heading = this.heading;
@@ -193,7 +193,7 @@ class QortexObjectListener {
     let obj_world = {};
     obj_world.id = obj_local.id;
 
-    obj_world.position = {}
+    obj_world.position = {};
     obj_world.position.x = obj_local.position.x + this.x;
     obj_world.position.y = obj_local.position.y + this.y;
     obj_world.position.z = obj_local.position.z + this.z;
@@ -208,19 +208,19 @@ class QortexObjectListener {
   to_geo_coordinates(obj_cart) {
     let obj_geo = {};
     obj_geo.id = obj_cart.id;
-    
+
     let position = obj_cart.position;
     let lat_lng = utils.xyz_to_geo(this.lat, this.lng, this.heading,
                                    position.x, position.y, position.z);
     obj_geo.lat = lat_lng.lat;
     obj_geo.lng = lat_lng.lng;
     obj_geo.heading = lat_lng.bearing;
-    
+
     obj_geo.size = obj_cart.size;
     obj_geo.velocity = obj_cart.velocity;
     obj_geo.classification = obj_cart.objectClass;
-    
-    return obj_geo; 
+
+    return obj_geo;
   }
 
   handle_message() {
@@ -254,17 +254,17 @@ class QortexObjectListener {
       this.last_received_packet_timestamp = Date.now();
 
       /*
-      //DEBUG  
-      console.log("Number of objects:", 
+      //DEBUG
+      console.log("Number of objects:",
                   Object.keys(this.object_list_cart).length);
       console.log("Objects(Cart):", this.ip_address,
                   this.object_list_cart);
-      console.log("Objects(Geo):", this.ip_address, 
+      console.log("Objects(Geo):", this.ip_address,
                   this.object_list_geo);
       //*/
     }
 
-    
+
   }
 
   handle_data(data) {
@@ -348,8 +348,8 @@ class QortexObjectListener {
         }
         return;
       }
-      
-      console.log(err.message); 
+
+      console.log(err.message);
     });
 
     this.socket.on("close", () => {
@@ -360,7 +360,7 @@ class QortexObjectListener {
       // Try to reconnect
       setTimeout(() => {
         if (this.verbose) {
-          console.log("Attempting to reconnect to " + 
+          console.log("Attempting to reconnect to " +
                       this.ip_address + ":" + this.port);
         }
         this.socket = new net.Socket();
@@ -375,4 +375,4 @@ class QortexObjectListener {
   }
 }
 
-module.exports = QortexObjectListener
+module.exports = QortexObjectListener;
